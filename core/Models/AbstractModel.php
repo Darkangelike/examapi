@@ -64,13 +64,6 @@ public function remove(int $id):void
         );
 }
 
-/*
-public function findByColumnName($columnName)
-{
-    $sql = $this->pdo->per
-}
-*/
-
 }
 
 ?>

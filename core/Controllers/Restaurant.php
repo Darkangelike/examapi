@@ -41,6 +41,9 @@ class Restaurant extends AbstractController
 
     }
 
+    /**
+     * @return void
+     */
     public function suppr(){
         $request = $this->delete("json", [
             "id" => "number"
@@ -56,7 +59,25 @@ class Restaurant extends AbstractController
             return $this->json("The restaurant does not exist.", "delete");
         }
 
-        /* $this->defaultModel->remove($restaurant->getId()); */
+        $this->defaultModel->remove($restaurant->getId());
         return $this->json("The restaurant was successfully deleted.", "delete");
+    }
+
+    public function show(){
+        $request = $this->get("json", [
+            "id" => "number"
+        ]);
+
+        if (!$request){
+            return $this->json("Incorrect input", "delete");
+        }
+
+        $restaurant = $this->defaultModel->findById($request["id"]);
+
+        if (!$restaurant){
+            return $this->json("The restaurant does not exist.", "delete");
+        }
+
+        return $this->json($restaurant);
     }
 }

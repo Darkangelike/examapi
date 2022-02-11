@@ -21,6 +21,7 @@ class Restaurant extends AbstractModel implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
+            "id" => $this->id,
             "name" => $this->name,
             "address" => $this->address,
             "city" => $this->city
@@ -73,6 +74,12 @@ class Restaurant extends AbstractModel implements \JsonSerializable
     public function setCity(string $city): void
     {
         $this->city = $city;
+    }
+
+    public function getDishes()
+    {
+        $modelDishes = new \Models\Dish();
+        return $modelDishes->findAllByRestaurantId($this->getId());
     }
 
     public function save(Restaurant $restaurant){

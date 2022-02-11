@@ -49,10 +49,9 @@ abstract class AbstractController
         return \Models\user::getUser();
     }
 
-    public function json($trucARenvoyerAuClient, ?string $specialMethod = null){
-        return \App\Response::json($trucARenvoyerAuClient, $specialMethod);
+    public function json($infoToReturn, ?string $specialMethod = null){
+        return \App\Response::json($infoToReturn, $specialMethod);
     }
-
 
     public function get(string $dataType, array $requestBodyParams){
         return \App\Request::get($dataType,$requestBodyParams);
