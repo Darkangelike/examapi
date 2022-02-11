@@ -54,7 +54,7 @@ public function findAll():array
  * @param integer $id
  * 
  */
-public function delete(int $id):void
+public function remove(int $id):void
 {
     $deleteRequest = $this->pdo->prepare("DELETE FROM {$this->tableName} WHERE id=:id");
     $deleteRequest->execute(

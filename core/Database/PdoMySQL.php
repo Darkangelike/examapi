@@ -20,7 +20,7 @@ class PdoMySQL
     {
         if (self::$instance === null)
         {
-            self::$instance = new \PDO ("mysql:host=localhost;dbname=DATABASENAME;charset=utf8", "ADMINNAME", "PASSWORD", [
+            self::$instance = new \PDO ("mysql:host=localhost;dbname=restaurant;charset=utf8", "director", "soypattie", [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
             ]);

@@ -49,8 +49,8 @@ class Request
     public static function isSubmitted(string $dataType, array $requestBodyParams, string $get = null)
     {
         if($dataType == "json"){
-            $corpsRequete = file_get_contents('php://input');
-            $requestParams = json_decode($corpsRequete, true);
+            $bodyRequest = file_get_contents('php://input');
+            $requestParams = json_decode($bodyRequest, true);
         }
 
         if($dataType == "form"){
@@ -62,19 +62,19 @@ class Request
 
         }
 
-        $resultats = false;
+        $results = false;
 
-        foreach($requestBodyParams as $parametre=>$typeDeDonnees){
+        foreach($requestBodyParams as $parameter=>$typeDeDonnees){
 
-            if(!empty($requestParams[$parametre]))
+            if(!empty($requestParams[$parameter]))
             {
                 if($typeDeDonnees == 'text'){
-                    $resultats[$parametre] = htmlspecialchars($requestParams[$parametre]);
+                    $results[$parameter] = htmlspecialchars($requestParams[$parameter]);
                 }else if($typeDeDonnees == 'number'){
 
-                    if(ctype_digit($requestParams[$parametre])){
-                        $monNombre = htmlspecialchars($requestParams[$parametre]);
-                        $resultats[$parametre] = (int)$monNombre;
+                    if(ctype_digit($requestParams[$parameter])){
+                        $monNombre = htmlspecialchars($requestParams[$parameter]);
+                        $results[$parameter] = (int)$monNombre;
                     }else {return false;}
 
 
@@ -84,7 +84,7 @@ class Request
             }else{ return false; }
         }
 
-        return $resultats;
+        return $results;
 
 
 
