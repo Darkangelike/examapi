@@ -56,7 +56,7 @@ class Restaurant extends AbstractController
             return $this->json("The restaurant does not exist.", "delete");
         }
 
-        $this->defaultModel->remove($restaurant->getId());
-        $this->json("The restaurant was successfully deleted.", "delete");
+        /* $this->defaultModel->remove($restaurant->getId()); */
+        return $this->json("The restaurant was successfully deleted.", "delete");
     }
 }

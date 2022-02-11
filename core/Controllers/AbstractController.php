@@ -49,12 +49,10 @@ abstract class AbstractController
         return \Models\user::getUser();
     }
 
-    public function json($infoToReturn)
-    {
-        header('Access-Control-Allow-Headers: *');
-        header('Access-Control-Allow-Origin: *');
-        return \App\Response::json($infoToReturn);
+    public function json($trucARenvoyerAuClient, ?string $specialMethod = null){
+        return \App\Response::json($trucARenvoyerAuClient, $specialMethod);
     }
+
 
     public function get(string $dataType, array $requestBodyParams){
         return \App\Request::get($dataType,$requestBodyParams);
