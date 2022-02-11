@@ -20,6 +20,8 @@ class Restaurant extends AbstractModel implements \JsonSerializable
      */
     public function jsonSerialize()
     {
+        $dish = new \Models\Dish();
+
         return [
             "id" => $this->id,
             "name" => $this->name,
